@@ -3,25 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+
 import { Provider } from 'react-redux';
+import store from './store';
 
-const initialState = { count: 0, step: 1 };
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'increment':
-      return {...state, count : state.count + state.step};
-    case 'decrement':
-      return {...state, count : state.count - state.step};
-    case 'setStep':
-      return {...state, step: action.value };
-    default: 
-      return state;
-  }  
-};
-
-const store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>
