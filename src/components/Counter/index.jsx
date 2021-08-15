@@ -4,34 +4,40 @@ import ACTION_TYPES from '../../actions/actionTypes';
 import * as actionCreators from './../../actions';
 
 function Counter(props) {
-    const { count, step, dispatch } = props;
-
-    const increment = () => {        
-        dispatch(actionCreators.increment());
-    };
-
-    const decrement = () => {        
-        dispatch(actionCreators.decrement());
-    }
+    const {
+        count,
+        step,
+        incrementAction,
+        decrementAction,
+        setStepAction, 
+    } = props;
 
     const setStep = event => {        
-        dispatch(actionCreators.setStep(Number(event.target.value)));
+        setStepAction(Number(event.target.value));
     }
 
     return (
         <article>
             <div>Count: {count}</div>
             <input type='number' value={step} onChange={setStep} />
-            <button onClick={decrement}> - </button>
-            <button onClick={increment} > + </button>
+            <button onClick={decrementAction}> - </button>
+            <button onClick={incrementAction} > + </button>
         </article>
     )
 }
 
 const mapStateToProps= state => state;
 
-const withState = connect (mapStateToProps);
+const mapDispatchToProps = dispatch => {
+    return {
+        incrementAction: () => {dispatch(actionCreators.increment())},
+        decrementAction: () => {dispatch(actionCreators.decrement())},
+        setStepAction: value => {dispatch(actionCreators.setStep(value))},
+    };
+};
 
-const CounterWithState = connect(mapStateToProps)(Counter);
+//const withState = connect (mapStateToProps);
+
+const CounterWithState = connect(mapStateToProps, mapDispatchToProps)(Counter);
 
 export default CounterWithState;
