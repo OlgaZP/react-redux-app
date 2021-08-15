@@ -1,23 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ACTION_TYPES from '../../actions/actionTypes';
+import * as actionCreators from './../../actions';
 
 function Counter(props) {
     const { count, step, dispatch } = props;
 
-    const increment = () => {
-        // action - js object with type required
-        const action = {type: 'increment' };
-        dispatch(action);
+    const increment = () => {        
+        dispatch(actionCreators.increment());
     };
 
-    const decrement = () => {
-        const action = {type: 'decrement' };
-        dispatch(action);
+    const decrement = () => {        
+        dispatch(actionCreators.decrement());
     }
 
-    const setStep = event => {
-        const action = {type: 'setStep', value: Number(event.target.value)}
-        dispatch(action);
+    const setStep = event => {        
+        dispatch(actionCreators.setStep(Number(event.target.value)));
     }
 
     return (
