@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Counter from './components/Counter';
+//import Counter from './components/Counter';
 import UserPage from './pages/UserPage';
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
   //     </header>
   //   </div>
   // );
-     // return <Counter />;
-     return <UserPage />;
+     //return <Counter />;
+  return <UserPage />;
 }
 
 export default App;

@@ -1,18 +1,10 @@
-import ACTION_TYPES from "../actions/actionTypes";
+import { combineReducers } from "redux";
+import counterReducer from "./counterReducer";
+import usersReducer from "./usersReducer";
 
-const initialState = { count: 0, step: 1 };
+const rootReducer=combineReducers({
+  counter: counterReducer,
+  users: usersReducer,
+});
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ACTION_TYPES.INCREMENT:
-      return {...state, count : state.count + state.step};
-    case ACTION_TYPES.DECREMENT:
-      return {...state, count : state.count - state.step};
-    case ACTION_TYPES.SETSTEP:
-      return {...state, step: action.value };
-    default: 
-      return state;
-  }  
-};
-
-export default reducer;
+export default rootReducer;
