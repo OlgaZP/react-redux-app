@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
 //import Counter from './components/Counter';
-import UserPage from './pages/UserPage';
+import UserPage from './pages/UserPage'
+import UserSagaPage from './pages/UserSagaPage'
 
-function App() {
+function App () {
   // return (
   //   <div className="App">
   //     <header className="App-header">
@@ -22,8 +23,8 @@ function App() {
   //     </header>
   //   </div>
   // );
-     //return <Counter />;
-  return <UserPage />;
+  //return <Counter />;
+  return <UserSagaPage />
 }
 
-export default App;
+export default App
