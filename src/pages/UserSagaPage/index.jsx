@@ -1,12 +1,12 @@
-import React from 'react'
-import UserSagaForm from '../../components/UserSagaForm'
-import UserSagaList from '../../components/UserSagaList'
+import React from 'react';
+import UserSagaForm from '../../components/UserSagaForm';
+import UserSagaList from '../../components/UserSagaList';
 
-export default function index () {
+export default function UserSagaPage () {
   return (
     <>
       <UserSagaForm />
       <UserSagaList />
     </>
-  )
+  );
 }

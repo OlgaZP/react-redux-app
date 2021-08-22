@@ -1,8 +1,8 @@
-import logo from './logo.svg'
-import './App.css'
+import logo from './logo.svg';
+import './App.css';
 //import Counter from './components/Counter';
-import UserPage from './pages/UserPage'
-import UserSagaPage from './pages/UserSagaPage'
+import UserPage from './pages/UserPage';
+import UserSagaPage from './pages/UserSagaPage';
 
 function App () {
   // return (
@@ -24,7 +24,7 @@ function App () {
   //   </div>
   // );
   //return <Counter />;
-  return <UserSagaPage />
+  return <UserSagaPage />;
 }
 
-export default App
+export default App;

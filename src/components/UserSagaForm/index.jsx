@@ -1,19 +1,20 @@
-import React from 'react'
-import { Formik, Form, Field } from 'formik'
-import { connect } from 'react-redux'
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
+import { connect } from 'react-redux';
+import { createUserAction } from './../../actions';
 
 function UserSagaForm (props) {
-  const {} = props
+  const { createUser } = props;
 
   const initialUserValues = {
     name: '',
-    telNumber: '',
-    isBanned: false
-  }
+    phone: '',
+    isBanned: false,
+  };
   const submitHandler = (values, formikBag) => {
-    //
-    formikBag.resetForm()
-  }
+    createUser(values);
+    formikBag.resetForm();
+  };
 
   return (
     <Formik initialValues={initialUserValues} onSubmit={submitHandler}>
@@ -21,13 +22,19 @@ function UserSagaForm (props) {
         return (
           <Form>
             <Field name='name' />
-            <Field name='telNumber' />
+            <Field name='phone' />
             <button type='submit'>Add</button>
           </Form>
-        )
+        );
       }}
     </Formik>
-  )
+  );
 }
 
-export default UserSagaForm
+const mapDispatchToProps = dispatch => ({
+  createUser: user => {
+    dispatch(createUserAction(user));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(UserSagaForm);
