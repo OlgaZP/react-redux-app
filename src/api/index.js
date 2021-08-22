@@ -37,3 +37,11 @@ export const createUser = user => {
   users.push(newUser);
   return Promise.resolve({ data: newUser });
 };
+
+//для сервера
+//export const deleteUser = id => apiInstance.delete(`/users/${id}`)
+export const deleteUser = id => {
+  const index = users.findIndex(u => u.id === id);
+
+  return Promise.resolve({ data: users.splice(index, 1) });
+};

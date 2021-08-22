@@ -5,7 +5,7 @@ import ACTION_TYPES from '../../actions/actionTypes';
 
 // Получить состояние из глобального состояния
 function UsersSagaList (props) {
-  const { users, isFetching, error, getUsers } = props;
+  const { users, isFetching, error, getUsers, deleteUser } = props;
 
   useEffect(() => {
     getUsers();
@@ -16,14 +16,15 @@ function UsersSagaList (props) {
     //   updateUserAction({ id: id, isBanned: !isBanned })
     // }
 
-    // const deleteUser = () => {
-    //   deleteUserAction(id)
-    // }
+    const deleteHandler = () => {
+      deleteUser(id);
+    };
+
     return (
       <li key={id}>
         ID: {id} name: {name} tel.: {phone}
         <input type='checkbox' checked={isBanned} />
-        <button>Delete</button>
+        <button onClick={deleteHandler}>Delete</button>
       </li>
     );
   };
@@ -35,6 +36,7 @@ const mapStateToProps = state => state.sagaUsers;
 
 const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(actionCreators.getUsersAction()),
+  deleteUser: id => dispatch(actionCreators.deleteUserAction(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersSagaList);
